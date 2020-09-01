@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Class containing Data Access Logic for Book Entity
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public interface BooksRepository extends JpaRepository<Book, Long> {
 

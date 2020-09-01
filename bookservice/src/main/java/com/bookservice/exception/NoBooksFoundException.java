@@ -3,7 +3,7 @@ package com.bookservice.exception;
 /**
  * Exception thrown when there are no books found in the system
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public class NoBooksFoundException extends RuntimeException {
 

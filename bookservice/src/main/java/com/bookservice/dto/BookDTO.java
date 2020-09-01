@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Book DTO
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Data
 @AllArgsConstructor

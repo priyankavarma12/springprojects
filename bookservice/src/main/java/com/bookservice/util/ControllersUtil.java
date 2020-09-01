@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
  * Utility class for Controllers. It can be used for returning
  * different types of Response Entities
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public class ControllersUtil {
 

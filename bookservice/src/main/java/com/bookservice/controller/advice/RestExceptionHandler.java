@@ -17,7 +17,7 @@ import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
 /**
  * Class Containing Handlers for the Exceptions
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Slf4j
 @Order(HIGHEST_PRECEDENCE)

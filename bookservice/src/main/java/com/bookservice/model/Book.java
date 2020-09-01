@@ -12,7 +12,7 @@ import javax.persistence.Id;
 /**
  * Book Model
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Data
 @AllArgsConstructor

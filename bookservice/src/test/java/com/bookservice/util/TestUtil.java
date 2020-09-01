@@ -6,13 +6,13 @@ import com.bookservice.dto.BookDTO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public class TestUtil {
 
     public static BookDTO getTestBook() {
         return BookDTO.builder()
-                .author("SpallyaTest").name("Test Book").price(20.00)
+                .author("PriyankaVarmaTest").name("Test Book").price(20.00)
                 .description("test book").genre("test").publishedYear("2011")
                 .build();
     }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * Class used for returning the error information when internal
  * server error happens
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Data
 @NoArgsConstructor

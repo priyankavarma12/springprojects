@@ -3,7 +3,7 @@ package com.bookservice.exception;
 /**
  * Exception thrown when the book of a particular id is not found in the system
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public class BookNotFoundException extends RuntimeException {
 

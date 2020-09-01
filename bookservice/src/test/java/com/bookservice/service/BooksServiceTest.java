@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 /**
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @RunWith(MockitoJUnitRunner.class)
 public class BooksServiceTest {

@@ -21,7 +21,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * Class containing business logic for the operations on Book Entity
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Slf4j
 @Service

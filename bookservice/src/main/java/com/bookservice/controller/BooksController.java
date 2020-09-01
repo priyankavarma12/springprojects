@@ -21,7 +21,7 @@ import java.util.Optional;
 /**
  * Class Containing all apis related to book operation
  *
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 @Slf4j
 @RestController

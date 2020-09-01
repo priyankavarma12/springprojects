@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author Spallya Omar
+ * @author Priyanka Varma
  */
 public class UtilsTest {
 
