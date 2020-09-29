@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>New Invitation</h2>
+<mat-dialog-content>
+  <form [formGroup]="invitationForm">
+    <mat-grid-list cols="1" rowHeight="80px">
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="EPAM Office Location" formControlName="epamLocation" required>
+          <mat-error *ngIf="invitationForm.get('epamLocation').touched && !invitationForm.get('epamLocation').valid">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Estimated Duration" formControlName="estimatedDuration" required>
+          <mat-error
+            *ngIf="invitationForm.get('estimatedDuration').touched && !invitationForm.get('estimatedDuration').valid">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element" style="width: 40%; margin: 0.5rem;">
+          <mat-label>Visit Date & Time</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="visitDateTime" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-element" style="width: 10%; margin: 0.5rem;">
+          <mat-label>Hours</mat-label>
+          <input matInput type="number" min="1" max="12" formControlName="timeHrs" required>
+        </mat-form-field>
+        <mat-form-field class="form-element" style="width: 10%; margin: 0.5rem;">
+          <mat-label>Mins</mat-label>
+          <input matInput type="number" min="0" max="59" formControlName="timeMins" required>
+        </mat-form-field>
+        <mat-form-field class="form-element" style="width: 20%; margin: 0.5rem;">
+          <mat-label>Meridian</mat-label>
+          <mat-select formControlName="meridian">
+            <mat-option *ngFor="let med of meridians" [value]="med.value">
+                {{med.value}}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Purpose" formControlName="purpose" required>
+          <mat-error *ngIf="!invitationForm.get('purpose').valid && invitationForm.get('purpose').touched">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="POC" formControlName="poc" required>
+          <mat-error *ngIf="!invitationForm.get('poc').valid && invitationForm.get('poc').touched">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Visitor Location" formControlName="visitorLocation" required>
+          <mat-error
+            *ngIf="invitationForm.get('visitorLocation').touched && !invitationForm.get('visitorLocation').valid">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submitInvitaion()">Submit</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

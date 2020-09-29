@@ -1,0 +1,140 @@
+<div class="create-div">
+    <button mat-raised-button (click)="navigateToEditProfile()">Edit Profile</button>
+</div>
+
+<mat-vertical-stepper #stepper>
+    <ng-template matStepperIcon="number">
+        <mat-icon>done</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="edit">
+        <mat-icon>done</mat-icon>
+    </ng-template>
+    <!-- <ng-template matStepperIcon="done"></ng-template>
+    <ng-template matStepperIcon="number"></ng-template> -->
+    <mat-step *ngIf="pendingActions?.length !== 0">
+        <ng-template matStepLabel>Pending Actions</ng-template>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="pendingDataSource">
+
+                <!-- Visit Date Column -->
+                <ng-container matColumnDef="visitDate">
+                    <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.visitDateTime}} </td>
+                </ng-container>
+
+                <!-- Duration Column -->
+                <ng-container matColumnDef="duration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.estimatedDuration}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="purpose">
+                    <th mat-header-cell *matHeaderCellDef> Visit Purpose </th>
+                    <td mat-cell *matCellDef="let element">{{element.purpose}}</td>
+                </ng-container>
+
+                <!-- POC Column -->
+                <ng-container matColumnDef="poc">
+                    <th mat-header-cell *matHeaderCellDef> POC </th>
+                    <td mat-cell *matCellDef="let element"> {{element.poc}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element ; let i = index"> <a [ngStyle]="{'color' : 'green'}" (click)="accept(element , i)">Accept</a> / <a
+                            [ngStyle]="{'color' : 'red'}" (click)="reject(element , i)">Reject</a> </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="actions"></tr>
+                <tr mat-row *matRowDef="let row; columns: actions;"></tr>
+            </table>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Upcoming Visits</ng-template>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="upcomingDataSource">
+
+                <!-- Visit Date Column -->
+                <ng-container matColumnDef="visitDate">
+                    <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                    <td mat-cell *matCellDef="let element">{{element.visitDateTime}}</td>
+                </ng-container>
+
+                <!-- Duration Column -->
+                <ng-container matColumnDef="duration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element">{{element.estimatedDuration}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="purpose">
+                    <th mat-header-cell *matHeaderCellDef> Visit Purpose </th>
+                    <td mat-cell *matCellDef="let element">{{element.purpose}}</td>
+                </ng-container>
+
+                <!-- POC Column -->
+                <ng-container matColumnDef="poc">
+                    <th mat-header-cell *matHeaderCellDef> POC </th>
+                    <td mat-cell *matCellDef="let element">{{element.poc}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">{{element.status === 'NOT_STARTED' ? 'Not started' : 'Started' }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="visitorResponse">
+                    <th mat-header-cell *matHeaderCellDef> Visitor Response </th>
+                    <td mat-cell *matCellDef="let element">Accepted</td>
+                </ng-container>
+
+                <ng-container matColumnDef="qrCode">
+                    <th mat-header-cell *matHeaderCellDef> QR Code </th>
+                    <td mat-cell *matCellDef="let element" (click)="qrCode(element)" [ngStyle]="{'color' : 'blue' , 'cursor' : 'pointer'}">Link</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="upcomingDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: upcomingDisplayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Past Visits</ng-template>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="pastDataSource">
+
+                <!-- Visit Date Column -->
+                <ng-container matColumnDef="visitDate">
+                    <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.visitDateTime}} </td>
+                </ng-container>
+
+                <!-- Duration Column -->
+                <ng-container matColumnDef="duration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.estimatedDuration}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="purpose">
+                    <th mat-header-cell *matHeaderCellDef> Visit Purpose </th>
+                    <td mat-cell *matCellDef="let element">{{element.purpose}}</td>
+                </ng-container>
+
+                <!-- POC Column -->
+                <ng-container matColumnDef="poc">
+                    <th mat-header-cell *matHeaderCellDef> POC </th>
+                    <td mat-cell *matCellDef="let element"> {{element.poc}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="visitorResponse">
+                    <th mat-header-cell *matHeaderCellDef> Visitor Response </th>
+                    <td mat-cell *matCellDef="let element">{{element.visitorResponse === 'Y' ? 'Accepted' : 'Rejected' }} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="pastDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: pastDisplayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-step>
+
+</mat-vertical-stepper>

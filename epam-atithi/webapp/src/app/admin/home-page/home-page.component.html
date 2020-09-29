@@ -1,0 +1,66 @@
+<div class="create-div">
+    <button mat-raised-button color="primary" (click)="navigateToNewVisitorRegistration()">Create Visitor</button>
+</div>
+
+<h3>Visitor List</h3>
+
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- No Column -->
+        <ng-container matColumnDef="No">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let i=index"> {{ paginator.pageIndex === 0 ?  (i+1) : (i+1 + paginator.pageIndex * paginator.pageSize) }} </td>
+        </ng-container>
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element">
+                <a href="javascript: void(0)" (click)="navigateToVisitorDetails(element)">{{element.firstName + ' ' + element.lastName}}</a>
+            </td>
+        </ng-container>
+
+        <!-- National Id Column -->
+        <ng-container matColumnDef="nationalId">
+            <th mat-header-cell *matHeaderCellDef> National Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.nationalId}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        
+        <!-- Primary Phone Column -->
+        <ng-container matColumnDef="primaryPhone">
+            <th mat-header-cell *matHeaderCellDef> Primary Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.primaryCountryCode + ' ' + element.primaryPhNumber}} </td>
+        </ng-container>
+
+        <!-- Activated Column -->
+        <ng-container matColumnDef="activated">
+            <th mat-header-cell *matHeaderCellDef> Activated </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.activated" aria-hidden="false" aria-label="circle_outline" style="color: green;">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="!element.activated" aria-hidden="false" aria-label="highlight_off" style="color: red;">highlight_off</mat-icon>
+            </td>
+        </ng-container>
+
+        <!-- Email Sent Column -->
+        <ng-container matColumnDef="verificationEmailSent">
+            <th mat-header-cell *matHeaderCellDef> Email Sent </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.verificationEmailSent" aria-hidden="false" aria-label="circle_outline" style="color: green;">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="!element.verificationEmailSent" aria-hidden="false" aria-label="highlight_off" style="color: red;">highlight_off</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

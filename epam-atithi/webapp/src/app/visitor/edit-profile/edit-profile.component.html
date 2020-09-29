@@ -1,0 +1,95 @@
+<div>
+    <h3>Edit Profile</h3>
+    
+    
+    <form [formGroup]="formGroup" (ngSubmit)="onUpdate()" class="form">
+
+        <mat-grid-list cols="2" rowHeight="80px">
+    
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="First Name" formControlName="firstName">
+                    <mat-error *ngIf="formGroup.get('firstName').touched && !formGroup.get('firstName').valid">
+                       <!-- TODO -->
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Last Name" formControlName="lastName">
+                    <mat-error *ngIf="formGroup.get('lastName').touched && !formGroup.get('lastName').valid">
+                       <!-- TODO -->
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="National ID" formControlName="nationalId" required>
+                    <mat-error *ngIf="!formGroup.get('nationalId').valid && formGroup.get('nationalId').touched">
+                        Required field, must be between 5 and 10 characters.
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Company Name" formControlName="companyName" required>
+                    <mat-error *ngIf="!formGroup.get('companyName').valid && formGroup.get('companyName').touched">
+                        Required field
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+    
+            <mat-grid-tile>
+                <div class="form-element">
+                <mat-form-field class="code">
+                    <mat-label>Country Code</mat-label>
+                    <mat-select required formControlName="codePrimaryPhone">
+                        <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
+                          {{code.dial_code}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="phone">
+                    <input matInput placeholder="Primary Phone" formControlName="primaryPhone" required>
+                    <mat-error *ngIf="!formGroup.get('primaryPhone').valid && formGroup.get('primaryPhone').touched">
+                        Required field
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            </mat-grid-tile>
+    
+            <mat-grid-tile>
+                <div class="form-element">
+                    <mat-form-field class="code">
+                        <mat-label>Country Code</mat-label>
+                        <mat-select formControlName="codeSecondaryPhone">
+                            <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
+                                {{code.dial_code}}
+                              </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                <mat-form-field class="phone">
+                    <input matInput placeholder="Secondary Phone" formControlName="secondaryPhone">
+                    <mat-error *ngIf="!formGroup.get('secondaryPhone').valid && formGroup.get('secondaryPhone').touched">
+                        Required field
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Email Address" formControlName="email">
+                    <mat-error *ngIf="formGroup.get('email').touched && !formGroup.get('email').valid">
+                       <!-- TODO -->
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            
+        </mat-grid-list>
+        <button mat-raised-button [disabled]='formGroup.invalid'>Update</button>
+    </form>
+</div>

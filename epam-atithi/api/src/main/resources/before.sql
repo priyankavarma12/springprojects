@@ -1,0 +1,1 @@
+INSERT INTO user (id, age, dob, email, name) VALUES (1000, 25, "1993-09-27", "spallya@testmail.com", "SpallyaTest");

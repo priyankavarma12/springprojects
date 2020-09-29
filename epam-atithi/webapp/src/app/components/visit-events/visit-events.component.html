@@ -1,0 +1,99 @@
+<mat-vertical-stepper #stepper>
+    <ng-template matStepperIcon="edit"></ng-template>
+    <ng-template matStepperIcon="done"></ng-template>
+    <ng-template matStepperIcon="number"></ng-template>
+    <mat-step>
+        <ng-template matStepLabel>Upcoming Visits</ng-template>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="upcomingDataSource">
+        
+                <!-- No Column -->
+                <ng-container matColumnDef="No">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let i=index"> {{ i+1 }} </td>
+                </ng-container>
+
+                <!-- Visit Date Column -->
+                <ng-container matColumnDef="visitDateTime">
+                    <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.visitDateTime}} </td>
+                </ng-container>
+        
+                <!-- Duration Column -->
+                <ng-container matColumnDef="estimatedDuration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.estimatedDuration}} </td>
+                </ng-container>
+        
+                <!-- Location Column -->
+                <ng-container matColumnDef="epamLocation">
+                    <th mat-header-cell *matHeaderCellDef> Location </th>
+                    <td mat-cell *matCellDef="let element"> {{element.epamLocation}} </td>
+                </ng-container>
+
+                <!-- Purpose Column -->
+                <ng-container matColumnDef="purpose">
+                    <th mat-header-cell *matHeaderCellDef> Purpose</th>
+                    <td mat-cell *matCellDef="let element"> {{element.purpose}} </td>
+                </ng-container>
+
+                <!-- POC Column -->
+                <ng-container matColumnDef="poc">
+                    <th mat-header-cell *matHeaderCellDef> POC </th>
+                    <td mat-cell *matCellDef="let element"> {{element.poc}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Past Visits</ng-template>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="pastDataSource">
+        
+                <!-- No Column -->
+                <ng-container matColumnDef="No">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let i=index"> {{ i+1 }} </td>
+                </ng-container>
+
+                <!-- Visit Date Column -->
+                <ng-container matColumnDef="visitDateTime">
+                    <th mat-header-cell *matHeaderCellDef> Visit Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.visitDateTime}} </td>
+                </ng-container>
+        
+                <!-- Duration Column -->
+                <ng-container matColumnDef="estimatedDuration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.estimatedDuration}} </td>
+                </ng-container>
+        
+                <!-- Location Column -->
+                <ng-container matColumnDef="epamLocation">
+                    <th mat-header-cell *matHeaderCellDef> Location </th>
+                    <td mat-cell *matCellDef="let element"> {{element.epamLocation}} </td>
+                </ng-container>
+                
+                <!-- Purpose Column -->
+                <ng-container matColumnDef="purpose">
+                    <th mat-header-cell *matHeaderCellDef> Purpose</th>
+                    <td mat-cell *matCellDef="let element"> {{element.purpose}} </td>
+                </ng-container>
+                
+                <!-- POC Column -->
+                <ng-container matColumnDef="poc">
+                    <th mat-header-cell *matHeaderCellDef> POC </th>
+                    <td mat-cell *matCellDef="let element"> {{element.poc}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-step>
+
+</mat-vertical-stepper>
