@@ -1,0 +1,109 @@
+version: '2.2'
+services:
+  cloudconfig:
+    image: cloudconfig:firsttry
+    container_name: cloudconfig
+    hostname: cloudconfig
+    expose:
+    - 8083
+    ports:
+    - 8083:8083
+    networks:
+    - jpop-network
+  volumes:
+    - config-repo:/var/lib/config-repo
+  discoveryservice:
+    image: discoveryservice:firsttry
+    container_name: discoveryservice
+    hostname: discoveryservice
+    expose:
+      - 8081
+    ports:
+      - 8081:8081
+    networks:
+      - jpop-network
+    depends_on:
+      - cloudconfig
+    links:
+      - cloudconfig
+  gatewayservice:
+    image: gatewayservice:firsttry
+    container_name: gatewayservice
+    hostname: gatewayservice
+    expose:
+      - 8086
+    ports:
+      - 8086:8086
+    networks:
+      - jpop-network
+    depends_on:
+      - cloudconfig
+      - discoveryservice
+    links:
+      - cloudconfig
+      - discoveryservice
+  bookservice:
+    image: bookservice:firsttry
+    container_name: bookservice
+    hostname: bookservice
+    expose:
+      - 8087
+    ports:
+      - 8087:8087
+    networks:
+      - jpop-network
+    depends_on:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+    links:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+  userservice:
+    image: userservice:firsttry
+    container_name: userservice
+    hostname: userservice
+    expose:
+      - 8082
+    ports:
+      - 8082:8082
+    networks:
+      - jpop-network
+    depends_on:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+    links:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+  libraryservice:
+    image: libraryservice:firsttry
+    container_name: libraryservice
+    hostname: libraryservice
+    expose:
+      - 8085
+    ports:
+      - 8085:8085
+    networks:
+      - jpop-network
+    depends_on:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+      - userservice
+      - bookservice
+    links:
+      - cloudconfig
+      - discoveryservice
+      - gatewayservice
+      - userservice
+      - bookservice
+networks:
+  jpop-network:
+  driver: bridge
+
+volumes:
+  config-repo:
+  external: true

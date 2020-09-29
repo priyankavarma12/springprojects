@@ -1,0 +1,54 @@
+logging:
+  level:
+    liquibase: INFO
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    hikari:
+      auto-commit: true
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      maximum-pool-size: 12
+      minimum-idle: 5
+    password: ''
+    url: jdbc:h2:mem:testdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://localhost:9411/
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8081/eureka/
+server:
+  port: 8085
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+
+
+
