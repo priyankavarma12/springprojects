@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet dbms="h2" id="2" author="priyanka">
+        <insert tableName="books">
+            <column name="id" value="2001"/>
+            <column name="name" value="Java the complete reference"/>
+            <column name="author" value="James Gosling"/>
+            <column name="description" value="Java for beginners"/>
+            <column name="genre" value="V2"/>
+            <column name="price" value="250.00"/>
+            <column name="publishedyear" value="2012"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="2002"/>
+            <column name="name" value="Python the complete reference"/>
+            <column name="author" value="James Bond"/>
+            <column name="description" value="Python for beginners"/>
+            <column name="genre" value="Subjective"/>
+            <column name="price" value="300.00"/>
+            <column name="publishedyear" value="2011"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="2003"/>
+            <column name="name" value="AWS For Cloud"/>
+            <column name="author" value="Rolls Royce"/>
+            <column name="description" value="AWS for beginners"/>
+            <column name="genre" value="V2"/>
+            <column name="price" value="500.00"/>
+            <column name="publishedyear" value="2013"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

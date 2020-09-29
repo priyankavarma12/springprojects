@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet dbms="h2" id="3" author="priyanka">
+        <addColumn tableName="books">
+            <column name="isbn" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet dbms="h2" id="4" author="priyanka">
+        <update tableName="books">
+            <column name="isbn" value="ISBN908765J"/>
+            <where>
+                id=1
+            </where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
